@@ -2,18 +2,21 @@ const express = require("express");
 const app = express();
 
 app.set("view engine", "ejs");
-app.use(express.static('public'))
+app.use(express.static("public"));
 
-app.get("/:nome/:lang", (req, res) => {
-  var nome = req.params.nome;
-  var lang = req.params.lang;
-  var msg= true;
-  res.render("index.ejs", {
-    nome: nome,
-    lang: lang,
-    mensagem: msg
-  });
+
+app.get("/", (req, res) => {
+  res.render("index.ejs");
 });
+
+
+
+
+
+
+
+
+
 
 app.listen(8080, (erro) => {
   if (erro) {
