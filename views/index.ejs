@@ -12,7 +12,12 @@
     <h1>Guia de perguntas</h1>
     <hr>
    <p>Nome: <%=nome%></p> 
-   <p>Linguagem favorita: <%=lang%></p> 
+   <p>Linguagem favorita: <%=lang%></p>
+   <%if(mensagem){%>
+    <h3>Isso é uma mensagem de erro</h3>
+   <%} else{%>
+    <h3>Nenhum erro!</h3>
+<%}%>
 </body>
 
 </html>
