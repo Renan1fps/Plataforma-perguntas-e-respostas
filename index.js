@@ -1,5 +1,13 @@
 const express = require("express");
 const app = express();
+const connection=require("./dataBase/dataBase")
+
+connection.authenticate().then(()=>{
+  console.log("Conexão estabelecida com banco de dados!")
+})
+.catch((erro)=>{
+  console.log("erro")
+})
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
