@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
@@ -13,7 +15,9 @@ app.get("/perguntar", (req, res) => {
 });
 
 app.post("/salvarpergunta", (req, res) => {
-  res.send("formulario recebido!");
+  const titulo = req.body.titulo;
+  const descricao = req.body.descricao;
+  res.send("formulario recebido! "+ `Titulo: ${titulo}, Descrição: ${descricao}`);
 });
 
 app.listen(8080, (erro) => {
