@@ -18,7 +18,11 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  Pergunta.findAll({ raw: true }).then((perguntas) => {
+    res.render("index.ejs", {
+      perguntas: perguntas,
+    });
+  });
 });
 
 app.get("/perguntar", (req, res) => {
