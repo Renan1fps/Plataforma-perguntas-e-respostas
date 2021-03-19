@@ -18,9 +18,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  Pergunta.findAll({  order:[
-  ['id','DESC']
-  ] }).then((perguntas) => {
+  Pergunta.findAll({ order: [["id", "DESC"]] }).then((perguntas) => {
     res.render("index.ejs", {
       perguntas: perguntas,
     });
@@ -39,6 +37,19 @@ app.post("/salvarpergunta", (req, res) => {
     descricao: descricao,
   }).then(() => {
     res.redirect("/");
+  });
+});
+
+app.get("/pergunta/:id", (req, res) => {
+  const id = req.params.id;
+  Pergunta.findOne({
+    where: { id: id },
+  }).then((pergunta) => {
+    if (pergunta != undefined) {
+      res.render("pergunta");
+    } else {
+      res.render("notfound");
+    }
   });
 });
 
