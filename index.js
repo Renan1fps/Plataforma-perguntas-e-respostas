@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const connection = require("./dataBase/dataBase");
 const Pergunta = require("./dataBase/Pergunta");
+const Resposta = require("./dataBase/Resposta");
 
 connection
   .authenticate()
@@ -47,7 +48,7 @@ app.get("/pergunta/:id", (req, res) => {
   }).then((pergunta) => {
     if (pergunta != undefined) {
       res.render("pergunta", {
-        pergunta: pergunta
+        pergunta: pergunta,
       });
     } else {
       res.render("notfound");
