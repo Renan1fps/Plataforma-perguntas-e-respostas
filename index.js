@@ -18,7 +18,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  Pergunta.findAll({ raw: true }).then((perguntas) => {
+  Pergunta.findAll({  order:[
+  ['id','DESC']
+  ] }).then((perguntas) => {
     res.render("index.ejs", {
       perguntas: perguntas,
     });
