@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<%-include('partials/header.ejs')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
-</head>
-
-<body>
-    <div>Pergunta encontrada</div>
-</body>
-
-</html>
+    <body>
+        <%-include('partials/navbar.ejs')%>
+            <div class="container">
+                <hr>
+                <h1><%= pergunta.titulo %></h1>
+                <p><%= pergunta.descricao %></p>
+            </div>
+    </body>
+    <%-include('partials/footer.ejs')%>
