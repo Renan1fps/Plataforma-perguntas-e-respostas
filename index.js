@@ -56,6 +56,17 @@ app.get("/pergunta/:id", (req, res) => {
   });
 });
 
+app.post("/responder", (req, res) => {
+  const corpo = req.body.corpo;
+  const perguntaId = req.body.pergunta;
+  Resposta.create({
+    corpo: corpo,
+    perguntaId: perguntaId,
+  }).then(() => {
+    res.redirect("/pergunta/"+ perguntaId);
+  });
+});
+
 app.listen(8080, (erro) => {
   if (erro) {
     console.log("Erro ao rodar app!");
