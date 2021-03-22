@@ -4,16 +4,34 @@
         <%-include('partials/navbar.ejs')%>
             <div class="container">
                 <hr>
-                <h1><%= pergunta.titulo %></h1>
-                <h6><%= pergunta.descricao %></h6>
+                <h1>
+                    <%= pergunta.titulo %>
+                </h1>
+                <h6>
+                    <%= pergunta.descricao %>
+                </h6>
                 <hr>
-                <form method="POST" action="/responder" >
+                <form method="POST" action="/responder">
                     <h3>Responda</h3>
-                    <label >Resposta:</label>
-                    <textarea name="corpo" class="form-control" cols="30" rows="10" placeholder="Digite sua resposta"></textarea><br>
+                    <label>Resposta:</label>
+                    <textarea name="corpo" class="form-control" cols="30" rows="10"
+                        placeholder="Digite sua resposta"></textarea><br>
                     <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
                     <button type="submit" class="btn btn-primary">Responder</button>
                 </form>
+                <hr>
+                <% respostas.forEach(resposta=>{%>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <%= resposta.corpo%>
+                            </p>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
             </div>
     </body>
     <%-include('partials/footer.ejs')%>
